@@ -1,0 +1,1 @@
+{"uuid":"43779f7a-4d00-4f48-a66f-39f672e1cd04","name":"YaTest.java","children":["6f4fb05c-2667-4134-9c63-b09e164bc5ba"],"befores":[{"name":"beforetest","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1604056272462,"stop":1604056277917}],"afters":[],"links":[],"start":1604056272412,"stop":1604056314967}

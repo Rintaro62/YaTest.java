@@ -1,0 +1,1 @@
+{"uuid":"0065b434-eb5b-4eea-8569-7dfd1d18ba0a","name":"ForYandexTest","children":["e78a370a-ac38-41b1-bd0d-997393320a49"],"befores":[{"name":"beforetest","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1604005658609,"stop":1604005671558}],"afters":[],"links":[],"start":1604005657956,"stop":1604005693697}
