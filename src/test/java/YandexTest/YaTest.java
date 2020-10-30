@@ -26,14 +26,17 @@ public class YaTest extends Annotations {
         authya.clickJoinBtn();
         authya.setPasswdField("fortest");
         authya.clickSecondJoinBtn();
+        System.out.println("Ыigned in");
         send.clickProfileOpen();
         send.clickMailOpen();
         send.clickSubmitEmail();
         waitWindowEmail();
+        System.out.println("The letter is ready to be written");
         send.setAdress(adress);
         send.setTheme(theme);
         send.setTextMail(textMail);
         send.clickSendLetter();
+        System.out.println("Email sent");
         send.clickIncomingLetter();
         send.clickF5();
         waitLetter();
@@ -47,6 +50,7 @@ public class YaTest extends Annotations {
         send.clickAccountPage();
         send.setSignature(textMail);
         send.clickAddSignature();
+        System.out.println("Signature made");
         send.clickContacts();
         send.clickF5();
         send.clickSubmitEmail();
@@ -55,6 +59,7 @@ public class YaTest extends Annotations {
         send.setTheme(theme);
         send.setTextMail(textMail);
         send.clickSendLetter();
+        System.out.println("Second email sent");
         send.clickRet();
         send.clickF5();
         send.clickSecondLetter();
@@ -63,6 +68,7 @@ public class YaTest extends Annotations {
         send.clickCheck1();
         send.clickCheck2();
         send.clickDelete();
+        System.out.println("Massenges delete");
         send.clickF5();
 
 
