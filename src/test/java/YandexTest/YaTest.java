@@ -1,12 +1,13 @@
 package YandexTest;
 
 
-import PageObject.EmailPage;
-import PageObject.LoginPage;
+import PageObject.*;
 
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
 
 
 public class YaTest extends Annotations {
@@ -21,60 +22,63 @@ public class YaTest extends Annotations {
         getDriver().manage().window().maximize();
         LoginPage authya = new LoginPage(getDriver());
         EmailPage send = new EmailPage(getDriver());
+        ProfilePage prof = new ProfilePage(getDriver());
+        LetterPage let = new LetterPage(getDriver());
+        SignaturesPage signa = new SignaturesPage(getDriver());
 
         authya.setLoginField(adress);
         authya.clickJoinBtn();
         authya.setPasswdField("fortest");
         authya.clickSecondJoinBtn();
-        System.out.println("Ыigned in");
-        send.clickProfileOpen();
-        send.clickMailOpen();
+        System.out.println("Singed in");
+        prof.clickProfileOpen();
+        prof.clickMailOpen();
         send.clickSubmitEmail();
-        waitWindowEmail();
+        let.waitWindowMail();
         System.out.println("The letter is ready to be written");
-        send.setAdress(adress);
-        send.setTheme(theme);
-        send.setTextMail(textMail);
-        send.clickSendLetter();
+        let.setAdress(adress);
+        let.setTheme(theme);
+        let.setTextMail(textMail);
+        let.clickSendLetter();
         System.out.println("Email sent");
         send.clickIncomingLetter();
         send.clickF5();
-        waitLetter();
+        send.waitLetter();
         send.clickFirstLetter();
         send.clickTestLetter();
-        //getText(theme);
-        //assertEquals(driver.findElement(By.xpath(".//span[@class='mail-Message-Toolbar-Subject-Wrapper']")).getText(),theme);
-        //assertEquals(driver.findElement(By.xpath(".//div[contains(text(),'First test for Yandex')]")).getText(),textMail);
-        //driver.findElement(By.xpath(".//span[@class='mail-Message-Toolbar-Subject-Wrapper']")).getText();
+        send.waitElement();
+        assertEquals(driver.findElement(By.xpath(".//span[@class='mail-Message-Toolbar-Subject-Wrapper']/div")).getText(),theme);
+        assertEquals(driver.findElement(By.xpath(".//div[@class='js-message-body-content mail-Message-Body-Content']/div[1]")).getText(),textMail);
         send.clickSettingBtn();
         send.clickAccountPage();
-        send.setSignature(textMail);
-        send.clickAddSignature();
+        signa.setSignature(textMail);
+        signa.clickAddSignature();
         System.out.println("Signature made");
-        send.clickContacts();
+        signa.clickContacts();
         send.clickF5();
         send.clickSubmitEmail();
+        send.waitElement2();
+        assertEquals(driver.findElement(By.xpath("(//div[@class='ComposeReact-SignatureContainer']/div)[2]")).getText(),textMail);
         /**повторение шагов*/
-        send.setAdress(adress);
-        send.setTheme(theme);
-        send.setTextMail(textMail);
-        send.clickSendLetter();
+        let.setAdress(adress);
+        let.setTheme(theme);
+        let.setTextMail(textMail);
+        let.clickSendLetter();
         System.out.println("Second email sent");
         send.clickRet();
         send.clickF5();
         send.clickSecondLetter();
         send.clickOpenSecondLetter();
-        send.clickMassenge();
+        send.waitElement3();
+        assertEquals(driver.findElement(By.xpath(".//span[@class='mail-Message-Toolbar-Subject-Wrapper']/div")).getText(),theme);
+        assertEquals(driver.findElement(By.xpath(".//div[@class='js-message-body-content mail-Message-Body-Content']/div[1]")).getText(),textMail);
+        send.clickMessange();
         send.clickCheck1();
         send.clickCheck2();
         send.clickDelete();
-        System.out.println("Massenges delete");
+        System.out.println("Messangs delete");
         send.clickF5();
-
-
-
-
-
+        asCheck();
 
 
     }
